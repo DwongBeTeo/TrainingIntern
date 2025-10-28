@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cú pháp  tương tác với DOM</title>
+</head>
+<body>
+    <div id="zone1">
+        <h1>Cu phap tuong tac vs dom</h1>
+        <h1>Cu phap tuong tac vs dom2</h1>
+        <h1>Cu phap tuong tac vs dom3</h1>
+        <hr/>
+        <p>ajlsdfkjlsjfljsa;lfkjas;ljfl;sajf</p>
+        <div>
+            <h2 class="tittle"> tuong tac vs thuoc tinh class</h2>
+        </div>
+        <div>
+            Username
+            <input type="text" name="Username" id="u_name" value="duongTran">
+            <span id="u_value"></span>
+            <p>Noi dung 1</p>
+        </div>
+        <div>
+            <h2 class="title">;lkdajfo;jawpoejfokawjfhpWUFEE <span>hihi</span></h2>
+        </div>
+    </div>
+    <h2 class="title">h2 ngoai zone1</h2>
+    <h2 class="title">h2 thu3 ngoai zone1</h2>
+    <h2 class="title">h2 thu 4 ngoai zone1</h2>
+    
+
+    <script>
+        // tuong tac thong qua thuoc tinh id cua? phan tu
+        var zone1 = document.getElementById("zone1");
+        console.log(zone1);
+        var val = document.getElementById("u_name").value;
+        console.log("Gia tri cua input la:", val);
+        //tuong tac voi ten the?
+        var h1 = document.getElementsByTagName("h1")[1];
+        console.log(h1);
+        console.log("NoiDung: ", h1.innerHTML);
+        var p = document.getElementsByTagName("p");
+    
+        Array.from(p).forEach(element => {
+            console.log(element.innerHTML);
+        });
+        for (let index = 0; index < p.length; index++) {
+            console.log(p[index].innerHTML);
+        }
+
+        //TUONG TAC THONG QUA CLASS 
+        // var title = document.getElementsByClassName("title");
+        // Array.from(title).forEach(element => {
+        //     console.log(element.innerHTML);
+        //     console.log(element.innerText);
+        //     console.log(element.textContent);
+            
+        // });
+
+        //Tương tác thông qua cú pháp selector
+        var h2_zone1 = document.querySelectorAll("#zone1 h2");
+        h2_zone1.forEach(element => {
+            console.log("H2 trong zone1:", element.innerHTML);
+        });
+        input_text = document.querySelectorAll("input[type='text']");
+        console.log(input_text.value);
+        
+    </script>
+</body>
+</html>

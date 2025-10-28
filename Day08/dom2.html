@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event DoM</title>
+</head>
+<body>
+    <div id="zone1">
+        <h1>Cu phap tuong tac vs dom</h1>
+        <hr/>
+        <form action="">
+            <div>
+                <label for="u-name">Username:</label>
+                <input type="text" name="Username" id="u_name">
+                <span id="err_u_name">(*)</span>
+            </div>
+            <div>
+                <label for="u-pass">Password:</label>
+                <input type="password" name="Password" id="u_pass">
+                <span id="err_u_pass">(*)</span>
+            </div>
+            <input type="submit" name="" id="" value="Login">
+        </form>
+    </div>
+    <script>
+        const fn_change_uname = () => {
+            var uname = document.getElementById("u_name").value;
+            if (uname.trim() == "") {
+                document.getElementById("err_u_name").innerText = " khong duoc de trong";
+                document.getElementById("err_u_name").style.color = "red";
+            }else {
+                document.getElementById("err_u_name").innerHTML = "<span style='color:green'>OK</span>";
+            }
+        }
+        const fn_change_upass = () => {
+            var upass = document.getElementById("u_pass").value;
+            if (upass.trim() == "") {
+                document.getElementById("err_u_pass").innerText = " ban phai nhap mat khau";
+                document.getElementById("err_u_pass").style.color = "red";
+            }else {
+                document.getElementById("err_u_pass").innerHTML = "<span style='color:green'>OK</span>";
+            }
+        }
+        // optional: chặn submit nếu có lỗi
+        document.querySelector('form').addEventListener('submit', function(e){
+            fn_change_uname();
+            fn_change_upass();
+            if (document.getElementById('u_name').value.trim() === '' ||
+                document.getElementById('u_pass').value.trim() === '') {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
